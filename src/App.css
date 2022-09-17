@@ -1,38 +1,44 @@
-.App {
-  text-align: center;
-}
+@import url('https://cdn-uicons.flaticon.com/uicons-bold-rounded/css/uicons-bold-rounded.css');
+@import url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2);
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html{
+  font-size: 62.5%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  font-family: 'Product Sans';
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body{
+  background-color: #FF5A5F;
 }
-
-.App-link {
-  color: #61dafb;
+.navbar{
+  background-color: #FF5A5F;
+} 
+.headerIcon{
+  width: 7rem;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.shopTitle{
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.burgerMenuIcon i{
+  font-size: 5.5rem;
+}
+.navbar{
+  list-style-type: none;
+}
+.navbar li{
+  font-size: 3rem;
+  font-weight: 700;
+  transition: all .4s;
+  padding: .5rem;
+  border-bottom: solid transparent .4rem;
+}
+.navbar li a{
+  text-decoration: none;
+  color: black;
+}
+.navbar li:hover{
+  border-color: black;
 }
