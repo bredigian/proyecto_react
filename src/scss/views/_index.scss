@@ -1,0 +1,31 @@
+body{
+    background-color: $colorPrimary;
+    .headerIcon{
+        width: 7rem;
+    }
+    .shopTitle{
+        font-size: 1.75rem;
+        font-weight: 700;
+      }
+    .navbar{
+        background-color: $colorPrimary;
+        list-style-type: none;
+        li{
+            font-size: 3rem;
+            font-weight: 700;
+            transition: all .4s;
+            padding: .5rem;
+            border-bottom: solid transparent .4rem;
+            &:hover{
+                border-color: black;
+            }
+            a{
+                text-decoration: none;
+                color: black;
+            }
+        }
+        .burgerMenuIcon i{
+            font-size: 5.5rem;
+          }
+    }
+}
