@@ -1,7 +1,7 @@
 body {
   background: $colorPrimary;
   .headerIcon {
-    width: 7rem;
+    width: 10rem;
   }
   .shopTitle {
     font-size: 1.75rem;
@@ -20,13 +20,16 @@ body {
   }
   .welcome {
     &-title {
-      font-size: 7rem;
-      font-weight: 700;
-      background-color: black;
-      color: $colorPrimary;
-      letter-spacing: 2px;
-      padding: 2rem;
-      border-radius: 1rem;
+      animation: movingContainerAnimation 2s infinite;
+      &__title {
+        font-size: 7rem;
+        font-weight: 700;
+        color: black;
+        letter-spacing: 2px;
+      }
+      &__img {
+        width: 28rem;
+      }
     }
     &-items {
       &__title {
@@ -67,16 +70,17 @@ body {
     &-container {
       &__item {
         width: 320px;
+        height: 500px;
         background-color: black;
         border-radius: 1rem;
         &-img {
-          width: 30rem;
+          width: 25rem;
           img {
             width: 100%;
           }
         }
         &-name {
-          color: white;
+          color: $colorIcons;
           font-size: 2rem;
           font-weight: 700;
         }
@@ -91,13 +95,13 @@ body {
             font-size: 3rem;
             font-weight: 700;
             color: black;
-            background-color: white;
+            background-color: $colorPrimary;
             height: 50px;
             width: 50px;
             border-radius: 100%;
           }
           &__value {
-            color: white;
+            color: $colorPrimary;
             font-size: 3rem;
             font-weight: 700;
           }
@@ -108,7 +112,7 @@ body {
           align-items: center;
           justify-content: center;
           background-color: transparent;
-          color: white;
+          color: $colorPrimary;
           border: none;
           font-size: 3rem;
           font-weight: 700;

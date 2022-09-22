@@ -2,10 +2,7 @@
   background-color: black;
   padding: 5rem;
   &-img {
-    height: 20rem;
-    width: 20rem;
-    background-color: $colorPrimary;
-    border-radius: 100%;
+    width: 25rem;
     padding: 3rem;
     img {
       width: 100%;
@@ -13,7 +10,7 @@
   }
   &-container {
     p {
-      color: $colorPrimary;
+      color: $colorIcons;
       font-size: 2rem;
       font-weight: 700;
     }
@@ -21,14 +18,9 @@
       list-style-type: none;
       a {
         text-decoration: none;
-        img {
-          width: 2rem;
-        }
-        li {
-          color: $colorPrimary;
-          font-size: 2rem;
-          font-weight: 700;
-        }
+        color: $colorIcons;
+        font-size: 2rem;
+        font-weight: 700;
       }
     }
   }
