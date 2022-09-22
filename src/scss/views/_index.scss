@@ -1,31 +1,123 @@
-body{
-    background-color: $colorPrimary;
-    .headerIcon{
-        width: 7rem;
+body {
+  background: $colorPrimary;
+  .headerIcon {
+    width: 7rem;
+  }
+  .shopTitle {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: black;
+  }
+  .header {
+    position: sticky;
+    top: 0;
+    background: $colorPrimary;
+    z-index: 5;
+    box-shadow: 0px 5px 30px 0px rgba(0, 0, 0, 0.75);
+    .navbar {
+      @include navbarStyle;
     }
-    .shopTitle{
-        font-size: 1.75rem;
+  }
+  .welcome {
+    &-title {
+      font-size: 7rem;
+      font-weight: 700;
+      background-color: black;
+      color: $colorPrimary;
+      letter-spacing: 2px;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+    &-items {
+      &__title {
+        font-size: 2.5rem;
         font-weight: 700;
+        color: black;
       }
-    .navbar{
-        background-color: $colorPrimary;
-        list-style-type: none;
-        li{
+      &__container {
+        .typeItem {
+          background-color: rgba(0, 0, 0, 0.25);
+          border: solid black 0.4rem;
+          border-radius: 1rem;
+          transition: all 0.4s;
+          &-img {
+            width: 12rem;
+            img {
+              width: 100%;
+            }
+          }
+          &-name {
+            font-size: 2rem;
+            font-weight: 700;
+            color: black;
+          }
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+  .items {
+    &-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: black;
+    }
+    &-container {
+      &__item {
+        width: 320px;
+        background-color: black;
+        border-radius: 1rem;
+        &-img {
+          width: 30rem;
+          img {
+            width: 100%;
+          }
+        }
+        &-name {
+          color: white;
+          font-size: 2rem;
+          font-weight: 700;
+        }
+        &-counter {
+          button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border: none;
             font-size: 3rem;
             font-weight: 700;
-            transition: all .4s;
-            padding: .5rem;
-            border-bottom: solid transparent .4rem;
-            &:hover{
-                border-color: black;
-            }
-            a{
-                text-decoration: none;
-                color: black;
-            }
-        }
-        .burgerMenuIcon i{
-            font-size: 5.5rem;
+            color: black;
+            background-color: white;
+            height: 50px;
+            width: 50px;
+            border-radius: 100%;
           }
+          &__value {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+          }
+        }
+        .buttonAddOnCart {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: transparent;
+          color: white;
+          border: none;
+          font-size: 3rem;
+          font-weight: 700;
+          margin-left: auto;
+        }
+      }
     }
+  }
+  .footer {
+    @include footerStyle;
+  }
 }

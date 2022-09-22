@@ -1,0 +1,29 @@
+@mixin navbarStyle {
+  list-style-type: none;
+  li {
+    width: 5rem;
+    height: 5rem;
+    display: grid;
+    place-content: center;
+    background-color: black;
+    border-radius: 100%;
+    font-size: 3rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    padding: 0.5rem;
+    &:hover {
+      transform: scale(1.25);
+    }
+    a {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      text-decoration: none;
+      color: black;
+      i {
+        font-size: 2rem;
+        color: $colorIcons;
+      }
+    }
+  }
+}

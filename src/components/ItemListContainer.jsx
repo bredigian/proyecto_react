@@ -1,8 +1,15 @@
-const ItemListContainer=(props)=>{
-    return(
-        <div style={{border:"solid black 4px", borderRadius:"1rem", width:"75%", height:"300px", margin:"auto", display:"flex", justifyContent:"start", alignItems:"start", fontSize:"3rem", padding:"2rem"}}>
-            <p style={{padding:"1rem", backgroundColor:"black", color:"white", fontWeight:"bold", borderRadius:"1rem"}}>{props.greeting}</p>
-        </div>
-    )
+import Item from "./Item"
+const ItemListContainer = (props) => {
+  return (
+    <div className="items d-flex flex-column align-items-center p-4 gap-4">
+      <p className="items-title m-0">{props.title}</p>
+      <div className="items-container d-flex flex-row align-items-end">
+        <Item
+          nameItem="Logitech G203"
+          img="./img/products/mouse/g203Black.png"
+        />
+      </div>
+    </div>
+  )
 }
 export default ItemListContainer
