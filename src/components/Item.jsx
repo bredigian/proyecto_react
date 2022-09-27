@@ -1,15 +1,34 @@
 import ItemCount from "./ItemCount"
 import ButtonAddOnCart from "./ButtonAddOnCart"
 const Item = (props) => {
-  return (
-    <div className="items-container__item d-flex flex-column align-items-center justify-content-between gap-3 p-4">
-      <ButtonAddOnCart />
-      <div className="items-container__item-img">
-        <img src={props.img} alt="" />
-      </div>
-      <p className="items-container__item-name m-0">{props.nameItem}</p>
-      <ItemCount stock={props.stock} initial={props.initial} />
-    </div>
-  )
+  if (props.itemStock > 0) {
+    return (
+      <li className="items-container__list-item d-flex flex-column align-items-center justify-content-between gap-3 p-4">
+        <ButtonAddOnCart />
+        <div className="items-container__list-item__img">
+          <img src={props.itemImg} alt="" />
+        </div>
+        <p className="items-container__list-item__name m-0">{props.itemName}</p>
+        <p className="items-container__list-item__price m-0">
+          ${props.itemPrice}
+        </p>
+        <ItemCount stock={props.itemStock} initial={props.itemInitial} />
+      </li>
+    )
+  } else {
+    return (
+      <li className="noStock items-container__list-item d-flex flex-column align-items-center justify-content-between gap-3 p-4">
+        <ButtonAddOnCart />
+        <div className="items-container__list-item__img">
+          <img src={props.itemImg} alt="" />
+        </div>
+        <p className="items-container__list-item__name m-0">{props.itemName}</p>
+        <p className="items-container__list-item__price m-0">
+          ${props.itemPrice}
+        </p>
+        <ItemCount stock={props.itemStock} initial={props.itemInitial} />
+      </li>
+    )
+  }
 }
 export default Item

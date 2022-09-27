@@ -20,7 +20,7 @@ body {
   }
   .welcome {
     &-title {
-      animation: movingContainerAnimation 2s infinite;
+      animation: showContainer ease-in-out 3s;
       &__title {
         font-size: 7rem;
         font-weight: 700;
@@ -33,9 +33,12 @@ body {
     }
     &-items {
       &__title {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 700;
-        color: black;
+        background-color: black;
+        color: $colorPrimary;
+        padding: 1rem;
+        border-radius: 1rem;
       }
       &__container {
         .typeItem {
@@ -63,60 +66,89 @@ body {
   }
   .items {
     &-title {
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
-      color: black;
+      background-color: black;
+      color: $colorPrimary;
+      padding: 1rem;
+      border-radius: 1rem;
     }
     &-container {
-      &__item {
-        width: 320px;
-        height: 500px;
-        background-color: black;
-        border-radius: 1rem;
-        &-img {
-          width: 25rem;
-          img {
-            width: 100%;
-          }
-        }
-        &-name {
-          color: $colorIcons;
+      &__list {
+        &-title {
           font-size: 2rem;
+          background-color: black;
+          color: $colorPrimary;
+          padding: 0.5rem;
+          border-radius: 1rem;
           font-weight: 700;
+          width: 150px;
         }
-        &-counter {
-          button {
+        &-item {
+          width: 320px;
+          height: 500px;
+          background-color: black;
+          border-radius: 1rem;
+          &__img {
+            width: 20rem;
+            img {
+              width: 100%;
+            }
+          }
+          &__name {
+            color: $colorIcons;
+            font-size: 2rem;
+            font-weight: 700;
+          }
+          &__price {
+            color: $colorPrimary;
+            font-size: 3rem;
+            font-weight: 700;
+          }
+          &__counter {
+            button {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              background-color: transparent;
+              border: none;
+              font-size: 3rem;
+              font-weight: 700;
+              color: black;
+              background-color: $colorPrimary;
+              height: 50px;
+              width: 50px;
+              border-radius: 100%;
+            }
+            &-value {
+              color: $colorPrimary;
+              font-size: 3rem;
+              font-weight: 700;
+            }
+          }
+          .buttonAddOnCart {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background-color: transparent;
+            color: $colorPrimary;
             border: none;
             font-size: 3rem;
             font-weight: 700;
-            color: black;
-            background-color: $colorPrimary;
-            height: 50px;
             width: 50px;
-            border-radius: 100%;
-          }
-          &__value {
-            color: $colorPrimary;
-            font-size: 3rem;
-            font-weight: 700;
+            height: 50px;
+            margin-left: auto;
+            transition: all 0.2s;
+            &:hover {
+              color: white;
+            }
           }
         }
-        .buttonAddOnCart {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          background-color: transparent;
-          color: $colorPrimary;
-          border: none;
-          font-size: 3rem;
-          font-weight: 700;
-          margin-left: auto;
+        .noStock {
+          z-index: -1;
+          opacity: 0.2;
         }
       }
     }

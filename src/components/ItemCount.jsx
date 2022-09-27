@@ -17,9 +17,11 @@ const ItemCount = (props) => {
   }
 
   return (
-    <div className="items-container__item-counter d-flex align-items-center justify-content-between p-4 w-100">
+    <div className="items-container__list-item__counter d-flex align-items-center justify-content-between p-4 w-100">
       <button onClick={onDec}>-</button>
-      <p className="items-container__item-counter__value m-0">{cantInitial}</p>
+      <p className="items-container__list-item__counter-value m-0">
+        {cantInitial}
+      </p>
       <button onClick={onInc}>+</button>
     </div>
   )
