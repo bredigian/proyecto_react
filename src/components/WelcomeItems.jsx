@@ -2,7 +2,6 @@ import TypeItems from "./TypeItems"
 const WelcomeItems = () => {
   return (
     <div className="welcome-items d-flex flex-column align-items-center gap-4">
-      <p className="welcome-items__title m-0">Category</p>
       <div className="welcome-items__container d-flex align-items-end gap-5 flex-wrap">
         <TypeItems.Mouse nameItem="Mouse" img="./img/typeItems/mouse.png" />
         <TypeItems.Keyboard

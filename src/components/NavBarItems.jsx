@@ -1,9 +1,15 @@
+import { VscHome } from "react-icons/vsc"
+import {
+  HiOutlineShoppingBag,
+  HiOutlineShoppingCart,
+  HiOutlineInformationCircle,
+} from "react-icons/hi"
 const NavBarItems = {
   Home: () => {
     return (
       <li>
         <a href="#">
-          <i class="fi fi-br-home"></i>
+          <VscHome />
         </a>
       </li>
     )
@@ -12,7 +18,7 @@ const NavBarItems = {
     return (
       <li>
         <a href="#">
-          <i class="fi fi-br-shopping-bag"></i>
+          <HiOutlineShoppingBag />
         </a>
       </li>
     )
@@ -21,7 +27,7 @@ const NavBarItems = {
     return (
       <li>
         <a href="#">
-          <i class="fi fi-br-shopping-cart"></i>
+          <HiOutlineShoppingCart />
         </a>
       </li>
     )
@@ -30,7 +36,7 @@ const NavBarItems = {
     return (
       <li>
         <a href="#">
-          <i class="fi fi-br-info"></i>
+          <HiOutlineInformationCircle />
         </a>
       </li>
     )

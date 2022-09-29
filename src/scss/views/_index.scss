@@ -21,6 +21,7 @@ body {
   .welcome {
     &-title {
       animation: showContainer ease-in-out 3s;
+      animation-delay: 1s;
       &__title {
         font-size: 7rem;
         font-weight: 700;
@@ -32,22 +33,14 @@ body {
       }
     }
     &-items {
-      &__title {
-        font-size: 3rem;
-        font-weight: 700;
-        background-color: black;
-        color: $colorPrimary;
-        padding: 1rem;
-        border-radius: 1rem;
-      }
       &__container {
         .typeItem {
-          background-color: rgba(0, 0, 0, 0.25);
+          background-color: rgba(0, 0, 0, 0.35);
           border: solid black 0.4rem;
-          border-radius: 1rem;
+          @include skewTransform;
           transition: all 0.4s;
           &-img {
-            width: 12rem;
+            width: 18rem;
             img {
               width: 100%;
             }
@@ -58,7 +51,7 @@ body {
             color: black;
           }
           &:hover {
-            transform: scale(1.1);
+            background-color: transparent;
           }
         }
       }
@@ -71,7 +64,7 @@ body {
       background-color: black;
       color: $colorPrimary;
       padding: 1rem;
-      border-radius: 1rem;
+      @include skewTransform;
     }
     &-container {
       &__list {
@@ -80,15 +73,15 @@ body {
           background-color: black;
           color: $colorPrimary;
           padding: 0.5rem;
-          border-radius: 1rem;
           font-weight: 700;
           width: 150px;
+          @include skewTransform;
         }
         &-item {
           width: 320px;
           height: 500px;
           background-color: black;
-          border-radius: 1rem;
+          @include skewTransform;
           &__img {
             width: 20rem;
             img {
@@ -120,6 +113,11 @@ body {
               height: 50px;
               width: 50px;
               border-radius: 100%;
+              transition: all 0.2s;
+              &:hover {
+                color: black;
+                background-color: white;
+              }
             }
             &-value {
               color: $colorPrimary;

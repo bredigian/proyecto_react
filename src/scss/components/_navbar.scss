@@ -20,9 +20,10 @@
       text-align: center;
       text-decoration: none;
       color: black;
-      i {
-        font-size: 2rem;
+      svg {
+        font-size: 2.25rem;
         color: $colorIcons;
+        margin-bottom: 0.5rem;
       }
     }
   }
