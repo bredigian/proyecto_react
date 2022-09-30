@@ -1,32 +1,36 @@
-import ItemCount from "./ItemCount"
-import ButtonAddOnCart from "./ButtonAddOnCart"
+import ButtonItemMoreDetails from "./ButtonItemMoreDetails"
 const Item = (props) => {
   if (props.itemStock > 0) {
     return (
-      <li className="items-container__list-item d-flex flex-column align-items-center justify-content-between gap-3 p-4">
-        <ButtonAddOnCart />
-        <div className="items-container__list-item__img">
+      <li className="items-container__list-container__item d-flex flex-column align-items-center justify-content-center gap-5 p-4">
+        <ButtonItemMoreDetails
+          itemCategory={props.itemCategory}
+          itemId={props.itemId}
+        />
+        <div className="items-container__list-container__item-img">
           <img src={props.itemImg} alt="" />
         </div>
-        <p className="items-container__list-item__name m-0">{props.itemName}</p>
-        <p className="items-container__list-item__price m-0">
+        <p className="items-container__list-container__item-name m-0">
+          {props.itemName}
+        </p>
+        <p className="items-container__list-container__item-price m-0">
           ${props.itemPrice}
         </p>
-        <ItemCount stock={props.itemStock} initial={props.itemInitial} />
       </li>
     )
   } else {
     return (
-      <li className="noStock items-container__list-item d-flex flex-column align-items-center justify-content-between gap-3 p-4">
-        <ButtonAddOnCart />
-        <div className="items-container__list-item__img">
+      <li className="noStock items-container__list-container__item d-flex flex-column align-items-center justify-content-center gap-5 p-4">
+        <ButtonItemMoreDetails />
+        <div className="items-container__list-container__item-img">
           <img src={props.itemImg} alt="" />
         </div>
-        <p className="items-container__list-item__name m-0">{props.itemName}</p>
-        <p className="items-container__list-item__price m-0">
+        <p className="items-container__list-container__item-name m-0">
+          {props.itemName}
+        </p>
+        <p className="items-container__list-container__item-price m-0">
           ${props.itemPrice}
         </p>
-        <ItemCount stock={props.itemStock} initial={props.itemInitial} />
       </li>
     )
   }

@@ -1,8 +1,12 @@
 @import "./utilities/vars";
+@import "./utilities/transforms";
+@import "./utilities/animations";
 @import "./base/reset";
 @import "./base/fonts";
-@import "./components/animations";
 @import "./components/navbar";
 @import "./components/footer";
-@import "./components/transforms";
+@import "./components/itemDetail";
 @import "./views/index";
+@import "./views/products";
+@import "./views/cart";
+@import "./views/about";

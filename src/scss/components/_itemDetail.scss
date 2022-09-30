@@ -1,0 +1,54 @@
+.backToCategory {
+  background-color: black;
+  border: none;
+  color: $colorPrimary;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 5rem auto;
+  @include skewTransform;
+}
+.itemDetail {
+  background-color: black;
+  margin: 5rem;
+  width: 50%;
+  margin: 5rem auto;
+  @include skewTransform;
+  &-img {
+    width: 35rem;
+    img {
+      width: 100%;
+    }
+  }
+  &-name {
+    color: $colorPrimary;
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  &-price {
+    color: $colorPrimary;
+    font-size: 4rem;
+    font-weight: 700;
+  }
+  .itemCount {
+    button {
+      background-color: $colorPrimary;
+      width: 50px;
+      height: 50px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 100%;
+      transition: all 0.2s;
+      &:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+    &-value {
+      color: $colorPrimary;
+      font-size: 3rem;
+      font-weight: 700;
+    }
+  }
+}

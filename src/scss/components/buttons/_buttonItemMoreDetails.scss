@@ -1,0 +1,11 @@
+.buttonItemMoreDetails {
+  color: $colorPrimary;
+  font-size: 3rem;
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+  transition: all 0.2s;
+  &:hover {
+    color: white;
+  }
+}
