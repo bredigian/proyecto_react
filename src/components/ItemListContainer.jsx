@@ -13,7 +13,7 @@ const ItemListContainer = (props) => {
         .then((response) => {
           const data = JSON.parse(response.substring(47).slice(0, -2))
           if (category) {
-            setItems(data.table.rows.filter((item) => item.c[1].v === category))
+            setItems(data.table.rows.filter((item) => item.c[1].v == category))
           } else {
             setItems(data.table.rows)
           }

@@ -13,7 +13,7 @@ const ItemDetailContainer = () => {
         .then((response) => response.text())
         .then((response) => {
           const data = JSON.parse(response.substring(47).slice(0, -2))
-          setItem(data.table.rows.filter((i) => i.c[5].v === itemId))
+          setItem(data.table.rows.filter((i) => i.c[5].v == itemId))
         })
         .catch((err) => console.log(err))
     }, 500)
