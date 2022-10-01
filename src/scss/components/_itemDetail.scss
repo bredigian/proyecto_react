@@ -6,6 +6,7 @@
   font-weight: 700;
   margin: 5rem auto;
   @include skewTransform;
+  animation: showContainer ease-in-out 2s;
 }
 .itemDetail {
   background-color: black;
@@ -13,6 +14,7 @@
   width: 50%;
   margin: 5rem auto;
   @include skewTransform;
+  animation: showContainer ease-in-out 2s;
   &-img {
     width: 35rem;
     img {
@@ -40,9 +42,11 @@
       border: none;
       border-radius: 100%;
       transition: all 0.2s;
+      border: solid transparent 0.2rem;
       &:hover {
-        background-color: white;
-        color: black;
+        background-color: black;
+        color: $colorSecundary;
+        border-color: $colorSecundary;
       }
     }
     &-value {

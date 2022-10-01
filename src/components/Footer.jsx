@@ -3,7 +3,7 @@ const Footer = () => {
   return (
     <div className="footer d-flex align-items-center justify-content-around">
       <div className="footer-img">
-        <img src="/img/brgIconPurple.png" alt="" />
+        <img src="/img/brgIconWhite.png" alt="" />
       </div>
       <div className="footer-container d-flex flex-column align-items-start gap-2">
         <p className="m-0">Contact</p>

@@ -10,7 +10,7 @@
   }
   &-container {
     p {
-      color: $colorIcons;
+      color: $colorPrimary;
       font-size: 2rem;
       font-weight: 700;
     }
@@ -18,7 +18,7 @@
       list-style-type: none;
       a {
         text-decoration: none;
-        color: $colorIcons;
+        color: $colorPrimary;
         font-size: 2rem;
         font-weight: 700;
       }

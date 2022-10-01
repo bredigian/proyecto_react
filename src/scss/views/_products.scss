@@ -1,6 +1,7 @@
 @import "../components/buttons/buttonAddOnCart";
 @import "../components/buttons/buttonItemMoreDetails";
 .items {
+  animation: showContainer ease-in-out 2s;
   &-title {
     font-size: 3rem;
     font-weight: 700;
@@ -24,9 +25,22 @@
       }
       &-container {
         overflow-x: auto;
+        &::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: $colorPrimary;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-color: #000000;
+          border-radius: 10px;
+          border: 5px solid $colorPrimary;
+        }
         width: 100%;
         &__item {
-          width: 320px;
+          min-width: 320px;
           height: 500px;
           background-color: black;
           @include skewTransform;
@@ -37,7 +51,7 @@
             }
           }
           &-name {
-            color: $colorIcons;
+            color: $colorPrimary;
             font-size: 2rem;
             font-weight: 700;
           }
