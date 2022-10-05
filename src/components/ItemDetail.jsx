@@ -1,7 +1,13 @@
 import ItemCount from "./ItemCount"
-import ButtonAddOnCart from "./ButtonAddOnCart"
 import ButtonBackTo from "./ButtonBackTo"
+import { useState } from "react"
+import { Link } from "react-router-dom"
 const ItemDetail = (props) => {
+  const [goToCart, setGoToCart] = useState(false)
+  const onAdd = (quantity, nameItem) => {
+    setGoToCart(true)
+    console.log(`Se cargaron ${quantity} ${nameItem} al carrito.`)
+  }
   return (
     <>
       <ButtonBackTo
@@ -13,10 +19,18 @@ const ItemDetail = (props) => {
           <img src={props.itemImg} alt="" />
         </div>
         <div className="d-flex flex-column align-items-center gap-4">
-          <ButtonAddOnCart />
           <p className="itemDetail-name m-0">{props.itemName}</p>
           <p className="itemDetail-price m-0">${props.itemPrice}</p>
-          <ItemCount stock={props.itemStock} initial={props.itemInitial} />
+          {goToCart ? (
+            <Link to="/cart">Go to Cart</Link>
+          ) : (
+            <ItemCount
+              onAdd={onAdd}
+              stock={props.itemStock}
+              initial={props.itemInitial}
+              nameItem={props.itemName}
+            />
+          )}
         </div>
       </div>
     </>
