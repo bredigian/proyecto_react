@@ -1,38 +1,62 @@
 import ItemCount from "./ItemCount"
 import ButtonBackTo from "./ButtonBackTo"
 import { useState } from "react"
+import { CartContext } from "../context/CartContext"
+import { useContext } from "react"
 import { Link } from "react-router-dom"
-const ItemDetail = (props) => {
+import { MdOutlineShoppingCart } from "react-icons/md"
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+const ItemDetail = (data) => {
   const [goToCart, setGoToCart] = useState(false)
-  const onAdd = (quantity, nameItem) => {
+  const { addToCart } = useContext(CartContext)
+  const onAdd = (quantity) => {
     setGoToCart(true)
-    console.log(`Se cargaron ${quantity} ${nameItem} al carrito.`)
+    addToCart(data, quantity)
+    toast.success("Added to cart successfully!", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    })
   }
   return (
     <>
       <ButtonBackTo
-        toRoute={`/products/${props.itemType}`}
-        title={props.itemType}
+        toRoute={`/products/${data.category}`}
+        title={data.category}
       />
       <div className="itemDetail d-flex  align-items-center justify-content-around p-5">
         <div className="itemDetail-img">
-          <img src={props.itemImg} alt="" />
+          <img src={data.img} alt="" />
         </div>
         <div className="d-flex flex-column align-items-center gap-4">
-          <p className="itemDetail-name m-0">{props.itemName}</p>
-          <p className="itemDetail-price m-0">${props.itemPrice}</p>
+          <p className="itemDetail-name m-0">{data.name}</p>
+          <p className="itemDetail-price m-0">${data.price}</p>
           {goToCart ? (
-            <Link to="/cart">Go to Cart</Link>
+            <Link className="goToCart" to="/cart">
+              Go to Cart <MdOutlineShoppingCart />
+            </Link>
           ) : (
-            <ItemCount
-              onAdd={onAdd}
-              stock={props.itemStock}
-              initial={props.itemInitial}
-              nameItem={props.itemName}
-            />
+            <ItemCount onAdd={onAdd} initial={data.initial} data={data} />
           )}
         </div>
       </div>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   )
 }

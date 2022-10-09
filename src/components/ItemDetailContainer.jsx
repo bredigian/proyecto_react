@@ -27,12 +27,13 @@ const ItemDetailContainer = () => {
         {item.map((i) => (
           <ItemDetail
             key={i.c[5].v}
-            itemName={i.c[0].v}
-            itemType={i.c[1].v}
-            itemInitial="1"
-            itemStock={i.c[2].v}
-            itemPrice={i.c[3].v}
-            itemImg={i.c[4].v}
+            id={i.c[5].v}
+            name={i.c[0].v}
+            category={i.c[1].v}
+            initial={1}
+            stock={i.c[2].v}
+            price={i.c[3].v}
+            img={i.c[4].v}
           />
         ))}
       </>

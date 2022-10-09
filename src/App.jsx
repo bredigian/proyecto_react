@@ -5,31 +5,34 @@ import WelcomeContainer from "./components/WelcomeContainer"
 import ItemListContainer from "./components/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import Footer from "./components/Footer"
+import CartProvider from "./context/CartContext"
 
 const App = () => {
   return (
     <Router>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<WelcomeContainer />} />
-        <Route
-          exact
-          path="/products"
-          element={<ItemListContainer title="Products" />}
-        />
-        <Route
-          exact
-          path="/products/:category"
-          element={<ItemListContainer title="Products" />}
-        />
-        <Route
-          exact
-          path="/products/:category/:itemId"
-          element={<ItemDetailContainer />}
-        />
-        <Route exact path="/cart" element={<></>} />
-        <Route exact path="/about" element={<></>} />
-      </Routes>
+      <CartProvider>
+        <Header />
+        <Routes>
+          <Route exact path="/" element={<WelcomeContainer />} />
+          <Route
+            exact
+            path="/products"
+            element={<ItemListContainer title="Products" />}
+          />
+          <Route
+            exact
+            path="/products/:category"
+            element={<ItemListContainer title="Products" />}
+          />
+          <Route
+            exact
+            path="/products/:category/:itemId"
+            element={<ItemDetailContainer />}
+          />
+          <Route exact path="/cart" element={<></>} />
+          <Route exact path="/about" element={<></>} />
+        </Routes>
+      </CartProvider>
       <Footer />
     </Router>
   )

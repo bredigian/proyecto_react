@@ -32,6 +32,16 @@
     font-size: 4rem;
     font-weight: 700;
   }
+  .goToCart {
+    font-size: 2rem;
+    text-decoration: none;
+    color: $colorPrimary;
+    text-align: center;
+    transition: all 0.2s;
+    &:hover {
+      color: $colorSecundary;
+    }
+  }
   .itemCount {
     button {
       background-color: $colorPrimary;

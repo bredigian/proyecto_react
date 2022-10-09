@@ -24,11 +24,7 @@ const ItemCount = (props) => {
           +
         </button>
       </div>
-      <ButtonAddOnCart
-        onAdd={props.onAdd}
-        cant={cantInitial}
-        nameItem={props.nameItem}
-      />
+      <ButtonAddOnCart onAdd={props.onAdd} quantity={cantInitial} />
     </div>
   )
 }
