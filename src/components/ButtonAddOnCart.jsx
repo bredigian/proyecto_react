@@ -1,6 +1,5 @@
 import { MdOutlineAddShoppingCart } from "react-icons/md"
 const ButtonAddOnCart = (props) => {
-  console.log(props)
   return (
     <button
       onClick={() => props.onAdd(props.quantity)}

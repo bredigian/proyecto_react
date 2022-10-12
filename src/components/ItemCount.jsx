@@ -1,8 +1,8 @@
 import { useState } from "react"
 import ButtonAddOnCart from "./ButtonAddOnCart"
-const ItemCount = (props) => {
-  const [cantInitial, setCant] = useState(props.initial)
-  const [cantStock, setStock] = useState(props.stock)
+const ItemCount = ({ onAdd, data }) => {
+  const [cantInitial, setCant] = useState(data.initial)
+  const [cantStock, setStock] = useState(data.stock)
 
   const onInc = () => {
     setCant(parseInt(cantInitial) + 1)
@@ -24,7 +24,7 @@ const ItemCount = (props) => {
           +
         </button>
       </div>
-      <ButtonAddOnCart onAdd={props.onAdd} quantity={cantInitial} />
+      <ButtonAddOnCart onAdd={onAdd} quantity={cantInitial} />
     </div>
   )
 }

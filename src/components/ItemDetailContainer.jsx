@@ -21,10 +21,10 @@ const ItemDetailContainer = () => {
         .catch((err) => console.log(err))
     }, 1500)
   }, [itemId])
-  if (loading) {
-    return (
-      <>
-        {item.map((i) => (
+  return (
+    <>
+      {loading ? (
+        item.map((i) => (
           <ItemDetail
             key={i.c[5].v}
             id={i.c[5].v}
@@ -35,11 +35,11 @@ const ItemDetailContainer = () => {
             price={i.c[3].v}
             img={i.c[4].v}
           />
-        ))}
-      </>
-    )
-  } else {
-    return <Loading />
-  }
+        ))
+      ) : (
+        <Loading />
+      )}
+    </>
+  )
 }
 export default ItemDetailContainer

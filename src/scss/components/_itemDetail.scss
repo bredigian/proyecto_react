@@ -6,7 +6,7 @@
   font-weight: 700;
   margin: 5rem auto;
   @include skewTransform;
-  animation: showContainer ease-in-out 2s;
+  animation: showContainer ease-in-out 1s;
 }
 .itemDetail {
   background-color: black;
@@ -14,12 +14,19 @@
   width: 50%;
   margin: 5rem auto;
   @include skewTransform;
-  animation: showContainer ease-in-out 2s;
+  animation: showContainer ease-in-out 1s;
   &-img {
     width: 35rem;
     img {
       width: 100%;
     }
+  }
+  &-quantity {
+    background-color: $colorPrimary;
+    color: black;
+    padding: 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
   }
   &-name {
     color: $colorPrimary;

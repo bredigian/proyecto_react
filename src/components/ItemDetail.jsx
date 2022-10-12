@@ -35,6 +35,9 @@ const ItemDetail = (data) => {
           <img src={data.img} alt="" />
         </div>
         <div className="d-flex flex-column align-items-center gap-4">
+          <p className="itemDetail-quantity m-0 text-center">
+            Available quantity: {data.stock}
+          </p>
           <p className="itemDetail-name m-0">{data.name}</p>
           <p className="itemDetail-price m-0">${data.price}</p>
           {goToCart ? (
