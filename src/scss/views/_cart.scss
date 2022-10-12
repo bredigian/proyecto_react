@@ -1,0 +1,69 @@
+.cartEmpty {
+  animation: showContainer ease-in-out 1s;
+  background-color: black;
+  margin: 5rem auto;
+  @include skewTransform;
+  &-title {
+    font-size: 3rem;
+    color: $colorPrimary;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  &-link {
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: $colorPrimary;
+    transition: all 0.2s;
+    &:hover {
+      color: $colorSecundary;
+    }
+  }
+}
+.cart {
+  animation: showContainer ease-in-out 1s;
+  &-container {
+    &__item {
+      background-color: black;
+      @include skewTransform;
+      &-img {
+        width: 25rem;
+        img {
+          width: 100%;
+        }
+      }
+      &-info {
+        p {
+          color: $colorPrimary;
+          font-size: 2rem;
+          font-weight: 700;
+        }
+        .subTotal {
+          background-color: $colorPrimary;
+          color: black;
+          width: fit-content;
+          padding: 0 0.5rem;
+          font-size: 2.5rem;
+        }
+      }
+      .removeItem {
+        background-color: transparent;
+        color: $colorPrimary;
+        border: none;
+        font-size: 2rem;
+        transition: all 0.2s;
+        &:hover {
+          background-color: red;
+        }
+      }
+    }
+  }
+  &-total {
+    font-size: 5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background-color: black;
+    color: $colorPrimary;
+    padding: 2rem;
+    @include skewTransform;
+  }
+}

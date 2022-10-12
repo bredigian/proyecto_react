@@ -23,15 +23,35 @@ const CartProvider = ({ children }) => {
   }
 
   const removeProduct = (id) => {
-    setCart(cart.reduce((item) => item.id == id))
+    setCart(cart.filter((item) => item.id !== id))
   }
+
   const clearCart = () => {
     setCart([])
+  }
+
+  const totalPrice = () => {
+    return cart.reduce((prev, act) => prev + act.quantity * act.price, 0)
+  }
+
+  const totalProducts = () => {
+    return cart.reduce(
+      (cantProducts, product) => cantProducts + product.quantity,
+      0
+    )
   }
   console.log("Cart: ", cart)
   return (
     <CartContext.Provider
-      value={{ addToCart, isInCart, removeProduct, clearCart }}
+      value={{
+        addToCart,
+        isInCart,
+        removeProduct,
+        clearCart,
+        totalPrice,
+        totalProducts,
+        cart,
+      }}
     >
       {children}
     </CartContext.Provider>

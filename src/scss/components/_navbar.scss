@@ -43,5 +43,17 @@
     &:hover > ul {
       display: flex !important;
     }
+    .cartWidget {
+      &-total {
+        background-color: black;
+        width: 2rem;
+        height: 2rem;
+        font-size: 1.25rem;
+        color: $colorPrimary;
+        display: grid;
+        place-items: center;
+        border-radius: 100%;
+      }
+    }
   }
 }
