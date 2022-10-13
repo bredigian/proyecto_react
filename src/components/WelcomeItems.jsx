@@ -13,7 +13,7 @@ const WelcomeItems = () => {
           img="./img/typeItems/headphone.png"
         />
         <TypeItems.Joystick
-          nameItem="Joystick"
+          nameItem="Joysticks"
           img="./img/typeItems/joystick.png"
         />
       </div>

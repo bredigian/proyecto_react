@@ -1,26 +1,53 @@
 @mixin footerStyle {
   background-color: black;
   padding: 5rem;
-  &-img {
-    width: 25rem;
-    padding: 3rem;
-    img {
-      width: 100%;
+  @media (max-width: 768px) {
+    &-img {
+      width: 15rem;
+      padding: 2rem;
+      img {
+        width: 100%;
+      }
+    }
+    &-container {
+      p {
+        font-size: 1.5rem;
+        color: $colorPrimary;
+        font-weight: 700;
+      }
+      ul {
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          color: $colorPrimary;
+          font-weight: 700;
+          font-size: 1.5rem;
+        }
+      }
     }
   }
-  &-container {
-    p {
-      color: $colorPrimary;
-      font-size: 2rem;
-      font-weight: 700;
+  @media (min-width: 769px) {
+    &-img {
+      width: 25rem;
+      padding: 3rem;
+      img {
+        width: 100%;
+      }
     }
-    ul {
-      list-style-type: none;
-      a {
-        text-decoration: none;
+    &-container {
+      p {
         color: $colorPrimary;
         font-size: 2rem;
         font-weight: 700;
+      }
+      ul {
+        list-style-type: none;
+        a {
+          text-decoration: none;
+          color: $colorPrimary;
+          font-size: 2rem;
+          font-weight: 700;
+        }
       }
     }
   }

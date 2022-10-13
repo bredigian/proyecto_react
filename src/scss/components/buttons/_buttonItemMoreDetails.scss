@@ -1,4 +1,7 @@
 .buttonItemMoreDetails {
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
   color: $colorPrimary;
   font-size: 3rem;
   background-color: transparent;

@@ -13,3 +13,8 @@
     color: $colorSecundary;
   }
 }
+@media (max-width: 768px) {
+  .buttonAddOnCart {
+    font-size: 2rem;
+  }
+}

@@ -2,7 +2,7 @@ import { useState } from "react"
 import Loading from "./Loading"
 import WelcomeItems from "./WelcomeItems"
 import WelcomeTitle from "./WelcomeTitle"
-const WelcomeContainer = (props) => {
+const Home = (props) => {
   const [loading, setLoading] = useState(false)
   const load = () => {
     setTimeout(() => {
@@ -21,4 +21,4 @@ const WelcomeContainer = (props) => {
     return <Loading />
   }
 }
-export default WelcomeContainer
+export default Home

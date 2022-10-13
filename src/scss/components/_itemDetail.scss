@@ -73,3 +73,36 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .itemDetail {
+    width: 75%;
+    flex-direction: column !important;
+    gap: 2rem;
+    &-img {
+      width: 15rem;
+    }
+    &-quantity {
+      font-size: 1.5rem;
+    }
+    &-name {
+      font-size: 1.75rem;
+    }
+    &-price {
+      font-size: 2.5rem;
+    }
+    .itemCount {
+      button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.75rem;
+        &:hover {
+          background-color: $colorPrimary;
+          border-color: $colorPrimary;
+        }
+      }
+      &-value {
+        font-size: 2.25rem;
+      }
+    }
+  }
+}

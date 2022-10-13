@@ -27,6 +27,7 @@
       @include skewTransform;
       &-img {
         width: 25rem;
+        max-width: 185px;
         img {
           width: 100%;
         }
@@ -65,5 +66,33 @@
     color: $colorPrimary;
     padding: 2rem;
     @include skewTransform;
+  }
+}
+@media (max-width: 768px) {
+  .cart {
+    &-container {
+      &__item {
+        gap: 2rem !important;
+        width: 90% !important;
+        &-info {
+          p {
+            font-size: 1.75rem;
+            text-align: end;
+          }
+        }
+        .removeItem {
+          font-size: 1.75rem;
+          &:hover {
+            background-color: black;
+          }
+          &:active {
+            background-color: red;
+          }
+        }
+      }
+    }
+    &-total {
+      font-size: 3.5rem;
+    }
   }
 }

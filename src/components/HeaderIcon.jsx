@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-const HeaderIcon = (props) => {
+const HeaderIcon = () => {
   return (
     <div className="d-flex flex-column align-items-center gap-2">
       <Link to="/">

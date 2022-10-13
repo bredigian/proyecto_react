@@ -1,7 +1,7 @@
 import "./scss/app.scss"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Header from "./components/Header"
-import WelcomeContainer from "./components/WelcomeContainer"
+import Home from "./components/Home"
 import ItemListContainer from "./components/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import Footer from "./components/Footer"
@@ -14,7 +14,7 @@ const App = () => {
       <CartProvider>
         <Header />
         <Routes>
-          <Route exact path="/" element={<WelcomeContainer />} />
+          <Route exact path="/" element={<Home />} />
           <Route
             exact
             path="/products"
