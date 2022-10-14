@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import CartWidget from "./CartWidget"
-const NavBar = ({ handleBurgerMenu, isBurgerMenu }) => {
+const NavBar = ({ isBurgerMenu }) => {
   return (
     <nav
       className={
@@ -20,17 +20,17 @@ const NavBar = ({ handleBurgerMenu, isBurgerMenu }) => {
         </Link>
         <ul className="d-flex flex-column align-items-start">
           <li>
-            <Link className="link" to="/products/Headphone">
+            <Link className="link" to="/products/headphone">
               Headphone
             </Link>
           </li>
           <li>
-            <Link className="link" to="/products/Keyboard">
+            <Link className="link" to="/products/keyboard">
               Keyboard
             </Link>
           </li>
           <li>
-            <Link className="link" to="/products/Mouse">
+            <Link className="link" to="/products/mouse">
               Mouse
             </Link>
           </li>

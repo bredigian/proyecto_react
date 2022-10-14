@@ -8,7 +8,7 @@ const Item = (props) => {
           itemId={props.itemId}
         />
         <div className="items-container__list-container__item-img">
-          <img src={props.itemImg} alt="" />
+          <img src={`/img/products/${props.itemImg}`} alt="" />
         </div>
         <p className="items-container__list-container__item-name m-0">
           {props.itemName}
@@ -23,7 +23,7 @@ const Item = (props) => {
       <li className="noStock items-container__list-container__item d-flex flex-column align-items-center justify-content-center gap-5 p-4">
         <ButtonItemMoreDetails />
         <div className="items-container__list-container__item-img">
-          <img src={props.itemImg} alt="" />
+          <img src={`/img/products/${props.itemImg}`} alt="" />
         </div>
         <p className="items-container__list-container__item-name m-0">
           {props.itemName}

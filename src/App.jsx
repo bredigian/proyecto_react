@@ -4,7 +4,6 @@ import Header from "./components/Header"
 import Home from "./components/Home"
 import ItemListContainer from "./components/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetailContainer"
-import Footer from "./components/Footer"
 import CartProvider from "./context/CartContext"
 import Cart from "./components/Cart"
 
@@ -31,10 +30,8 @@ const App = () => {
             element={<ItemDetailContainer />}
           />
           <Route exact path="/cart" element={<Cart />} />
-          <Route exact path="/about" element={<></>} />
         </Routes>
       </CartProvider>
-      <Footer />
     </Router>
   )
 }

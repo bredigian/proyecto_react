@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ButtonAddOnCart from "./ButtonAddOnCart"
-const ItemCount = ({ onAdd, data }) => {
-  const [cantInitial, setCant] = useState(data.initial)
+const ItemCount = ({ onAdd, data, initial }) => {
+  const [cantInitial, setCant] = useState(initial)
   const [cantStock, setStock] = useState(data.stock)
 
   const onInc = () => {

@@ -5,6 +5,7 @@
     animation: showContainer ease-in-out 1s;
     padding: 1.5rem 0 !important;
     &-title {
+      text-transform: capitalize;
       font-size: 2.5rem;
       font-weight: 700;
       background-color: black;
@@ -18,6 +19,7 @@
         width: 100%;
         flex-direction: column !important;
         &-title {
+          text-transform: capitalize;
           font-size: 1.75rem;
           background-color: black;
           color: $colorPrimary;
@@ -77,6 +79,7 @@
   .items {
     animation: showContainer ease-in-out 1s;
     &-title {
+      text-transform: capitalize;
       font-size: 3rem;
       font-weight: 700;
       background-color: black;
@@ -89,6 +92,7 @@
         overflow-x: hidden;
         width: 100%;
         &-title {
+          text-transform: capitalize;
           font-size: 2rem;
           background-color: black;
           color: $colorPrimary;

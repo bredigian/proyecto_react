@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import { MdOutlineShoppingCart } from "react-icons/md"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
-const ItemDetail = (data) => {
+const ItemDetail = ({ data }) => {
   const [goToCart, setGoToCart] = useState(false)
   const { addToCart } = useContext(CartContext)
   const onAdd = (quantity) => {
@@ -27,12 +27,12 @@ const ItemDetail = (data) => {
   return (
     <>
       <ButtonBackTo
-        toRoute={`/products/${data.category}`}
-        title={data.category}
+        toRoute={`/products/${data.categoryId}`}
+        title={data.categoryId}
       />
       <div className="itemDetail d-flex  align-items-center justify-content-around p-5">
         <div className="itemDetail-img">
-          <img src={data.img} alt="" />
+          <img src={`/img/products/${data.img}`} alt="" />
         </div>
         <div className="d-flex flex-column align-items-center gap-4">
           <p className="itemDetail-quantity m-0 text-center">
@@ -45,7 +45,7 @@ const ItemDetail = (data) => {
               Go to Cart <MdOutlineShoppingCart />
             </Link>
           ) : (
-            <ItemCount onAdd={onAdd} initial={data.initial} data={data} />
+            <ItemCount onAdd={onAdd} initial={1} data={data} />
           )}
         </div>
       </div>

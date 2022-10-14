@@ -7,6 +7,9 @@
   margin: 5rem auto;
   @include skewTransform;
   animation: showContainer ease-in-out 1s;
+  p {
+    text-transform: capitalize;
+  }
 }
 .itemDetail {
   background-color: black;
