@@ -6,10 +6,13 @@ import { useEffect, useState } from "react"
 import { getFirestore, collection, addDoc } from "firebase/firestore"
 import Loading from "./Loading"
 import { useForm } from "react-hook-form"
+import Swal from "sweetalert2"
+import withReactContent from "sweetalert2-react-content"
 const Cart = () => {
   const { cart, totalPrice, clearCart } = useContext(CartContext)
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
+  const MySwal = withReactContent(Swal)
   const {
     register,
     formState: { errors },
@@ -36,7 +39,16 @@ const Cart = () => {
     addDoc(ordersCollection, order).then(({ id }) =>
       console.log(`Order ${id} created.`)
     )
-    clearCart()
+    MySwal.fire({
+      title: "Order created successfully!",
+      color: "#000000",
+      icon: "success",
+      iconColor: "#000000",
+      confirmButtonColor: "#000000",
+    })
+    setTimeout(() => {
+      clearCart()
+    }, 1500)
   }
   const handleShowForm = () => {
     setShowForm(!showForm)
