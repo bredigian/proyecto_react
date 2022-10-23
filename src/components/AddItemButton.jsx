@@ -1,8 +1,8 @@
 import { MdOutlineAddShoppingCart } from "react-icons/md"
-const ButtonAddOnCart = (props) => {
+const AddItemButton = ({ onAdd, quantity }) => {
   return (
     <button
-      onClick={() => props.onAdd(props.quantity)}
+      onClick={() => onAdd(quantity)}
       className="buttonAddOnCart d-flex flex-row align-items-center gap-3"
     >
       <p className="m-0">Add to cart</p>
@@ -10,4 +10,4 @@ const ButtonAddOnCart = (props) => {
     </button>
   )
 }
-export default ButtonAddOnCart
+export default AddItemButton

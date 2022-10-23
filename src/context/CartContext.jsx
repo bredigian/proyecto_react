@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 export const CartContext = React.createContext([])
 const CartProvider = ({ children }) => {
-  const [cart, setCart] = useState([])
+  const getInitialState = () => {
+    const cartLocalStorage = localStorage.getItem("cart")
+    return cartLocalStorage ? JSON.parse(cartLocalStorage) : []
+  }
+  const [cart, setCart] = useState(getInitialState)
   const addToCart = (data, quantity) => {
-    console.log(data)
     if (isInCart(data.id)) {
-      console.log("UPDATED PRODUCT!!!")
       setCart(
         cart.map((product) => {
           return product.id === data.id
@@ -14,7 +16,6 @@ const CartProvider = ({ children }) => {
         })
       )
     } else {
-      console.log("NEW PRODUCT IN CART!!!")
       setCart([...cart, { ...data, quantity }])
     }
   }
@@ -40,7 +41,9 @@ const CartProvider = ({ children }) => {
       0
     )
   }
-  console.log("Cart: ", cart)
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart))
+  }, [cart])
   return (
     <CartContext.Provider
       value={{

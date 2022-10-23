@@ -1,10 +1,8 @@
-import ItemCount from "./ItemCount"
 import ButtonBackTo from "./ButtonBackTo"
+import Description from "./Description"
 import { useState } from "react"
 import { CartContext } from "../context/CartContext"
 import { useContext } from "react"
-import { Link } from "react-router-dom"
-import { MdOutlineShoppingCart } from "react-icons/md"
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 const ItemDetail = ({ data }) => {
@@ -31,23 +29,7 @@ const ItemDetail = ({ data }) => {
         title={data.categoryId}
       />
       <div className="itemDetail d-flex  align-items-center justify-content-around p-5">
-        <div className="itemDetail-img">
-          <img src={`/img/products/${data.img}`} alt="" />
-        </div>
-        <div className="d-flex flex-column align-items-center gap-4">
-          <p className="itemDetail-quantity m-0 text-center">
-            Available quantity: {data.stock}
-          </p>
-          <p className="itemDetail-name m-0">{data.name}</p>
-          <p className="itemDetail-price m-0">${data.price}</p>
-          {goToCart ? (
-            <Link className="goToCart" to="/cart">
-              Go to Cart <MdOutlineShoppingCart />
-            </Link>
-          ) : (
-            <ItemCount onAdd={onAdd} initial={1} data={data} />
-          )}
-        </div>
+        <Description data={data} goToCart={goToCart} onAdd={onAdd} />
       </div>
       <ToastContainer
         position="top-right"

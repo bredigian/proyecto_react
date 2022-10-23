@@ -42,26 +42,15 @@
         width: 20rem;
       }
     }
-    &-items {
-      &__container {
-        justify-content: center !important;
-        .typeItem {
-          background-color: rgba(0, 0, 0, 0.35);
-          border: solid black 0.4rem;
-          @include skewTransform;
-          transition: all 0.4s;
-          &-img {
-            width: 8rem;
-            img {
-              width: 100%;
-            }
-          }
-          &-name {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: black;
-          }
-        }
+    &-order {
+      background-color: black;
+      padding: 2rem;
+      @include skewTransform;
+      &__title,
+      &__icon {
+        font-size: 4rem;
+        font-weight: 700;
+        color: $colorPrimary;
       }
     }
   }
@@ -100,31 +89,35 @@
           width: 28rem;
         }
       }
-      &-items {
-        &__container {
-          .typeItem {
-            background-color: rgba(0, 0, 0, 0.35);
-            border: solid black 0.4rem;
-            @include skewTransform;
-            transition: all 0.4s;
-            &-img {
-              width: 18rem;
-              img {
-                width: 100%;
-              }
-            }
-            &-name {
-              font-size: 2rem;
-              font-weight: 700;
-              color: black;
-            }
-            &:hover {
-              background-color: transparent;
-            }
+      &-order {
+        background-color: black;
+        border: solid black 0.4rem;
+        padding: 2rem;
+        @include skewTransform;
+        transition: all 0.3s;
+        &:hover {
+          background-color: $colorPrimary;
+          p,
+          svg {
+            color: black !important;
           }
+        }
+        &__title,
+        &__icon {
+          font-size: 6rem;
+          font-weight: 700;
+          color: $colorPrimary;
+          letter-spacing: 5px;
+          transition: all 0.3s;
         }
       }
     }
+  }
+}
+@media (max-width: 1200px) {
+  .welcome {
+    flex-direction: column !important;
+    gap: 5rem;
   }
 }
 .footer {

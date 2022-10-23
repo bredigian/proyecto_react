@@ -1,14 +1,14 @@
 import { useContext, useRef } from "react"
 import { CartContext } from "../context/CartContext"
 import { Link } from "react-router-dom"
-import CartItem from "./CartItem"
+import Brief from "./Brief"
 import { useEffect, useState } from "react"
 import { getFirestore, collection, addDoc } from "firebase/firestore"
 import Loading from "./Loading"
 import { useForm } from "react-hook-form"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-const Cart = () => {
+const Checkout = () => {
   const { cart, totalPrice, clearCart } = useContext(CartContext)
   const [loading, setLoading] = useState(false)
   const [showForm, setShowForm] = useState(false)
@@ -25,6 +25,7 @@ const Cart = () => {
         phone: data.phone,
         email: data.email,
         timeDay: new Date().toDateString(),
+        status: "generated",
       },
       items: cart.map((product) => ({
         id: product.id,
@@ -37,15 +38,14 @@ const Cart = () => {
     const db = getFirestore()
     const ordersCollection = collection(db, "orders")
     addDoc(ordersCollection, order).then(({ id }) =>
-      console.log(`Order ${id} created.`)
+      MySwal.fire({
+        title: `Order ${id} created successfully!`,
+        color: "#000000",
+        icon: "success",
+        iconColor: "#000000",
+        confirmButtonColor: "#000000",
+      })
     )
-    MySwal.fire({
-      title: "Order created successfully!",
-      color: "#000000",
-      icon: "success",
-      iconColor: "#000000",
-      confirmButtonColor: "#000000",
-    })
     setTimeout(() => {
       clearCart()
     }, 1500)
@@ -74,7 +74,7 @@ const Cart = () => {
           <div className="cart d-flex flex-column align-items-center gap-5 w-100 p-4">
             <div className="cart-container d-flex flex-column align-items-center gap-5 w-100">
               {cart.map((product) => (
-                <CartItem key={product.id} product={product} />
+                <Brief key={product.id} product={product} />
               ))}
             </div>
             <div className="cart-info d-flex align-items-center justify-content-center gap-5 w-100">
@@ -134,11 +134,19 @@ const Cart = () => {
                     <p className="inputTextError">Invalid email</p>
                   )}
                 </div>
-                <input
-                  type="submit"
-                  value="Checkout"
-                  className="buttonCheckout"
-                />
+                <div className="cart-checkout__form-input d-flex flex-column align-items-start">
+                  <label>Repeat email</label>
+                  <input
+                    type="email"
+                    {...register("email", {
+                      required: true,
+                    })}
+                  />
+                  {errors.email?.type === "required" && (
+                    <p className="inputTextError">Invalid email</p>
+                  )}
+                </div>
+                <input type="submit" value="Order" className="buttonCheckout" />
               </form>
             </div>
           </div>
@@ -149,4 +157,4 @@ const Cart = () => {
     return <Loading />
   }
 }
-export default Cart
+export default Checkout

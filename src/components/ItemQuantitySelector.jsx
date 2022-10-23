@@ -1,6 +1,6 @@
 import { useState } from "react"
-import ButtonAddOnCart from "./ButtonAddOnCart"
-const ItemCount = ({ onAdd, data, initial }) => {
+import AddItemButton from "./AddItemButton"
+const ItemQuantitySelector = ({ onAdd, data, initial }) => {
   const [cantInitial, setCant] = useState(initial)
   const [cantStock, setStock] = useState(data.stock)
 
@@ -15,7 +15,7 @@ const ItemCount = ({ onAdd, data, initial }) => {
 
   return (
     <div className="d-flex flex-column align-items-center gap-2 w-100">
-      <div className="itemCount d-flex align-items-center justify-content-between p-4 w-100">
+      <div className="itemCount d-flex align-items-center justify-content-center gap-5 p-4 w-100">
         <button disabled={cantInitial == 1} onClick={onDec}>
           -
         </button>
@@ -24,8 +24,8 @@ const ItemCount = ({ onAdd, data, initial }) => {
           +
         </button>
       </div>
-      <ButtonAddOnCart onAdd={onAdd} quantity={cantInitial} />
+      <AddItemButton onAdd={onAdd} quantity={cantInitial} />
     </div>
   )
 }
-export default ItemCount
+export default ItemQuantitySelector

@@ -56,9 +56,12 @@
               }
             }
             &-name {
-              font-size: 1.5rem;
+              font-size: 1.25rem;
+              text-align: center;
               color: $colorPrimary;
               font-weight: 700;
+              max-width: 200px;
+              overflow: hidden;
             }
             &-price {
               font-size: 2rem;
@@ -131,6 +134,8 @@
             &-name {
               color: $colorPrimary;
               font-size: 2rem;
+              max-width: 250px;
+              text-align: center;
               font-weight: 700;
             }
             &-price {

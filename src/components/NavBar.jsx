@@ -1,6 +1,17 @@
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import CartWidget from "./CartWidget"
+import { collection, getDocs, getFirestore } from "firebase/firestore"
+import { useState } from "react"
+import { useEffect } from "react"
 const NavBar = ({ isBurgerMenu }) => {
+  const [categories, setCategories] = useState([])
+  useEffect(() => {
+    const db = getFirestore()
+    const categoriesCollection = collection(db, "categories")
+    getDocs(categoriesCollection).then((snapshot) => {
+      setCategories(snapshot.docs.map((doc) => doc.data().name))
+    })
+  }, [])
   return (
     <nav
       className={
@@ -10,30 +21,22 @@ const NavBar = ({ isBurgerMenu }) => {
       }
     >
       <li>
-        <Link className="link" to="/">
+        <NavLink className="link" to="/">
           Home
-        </Link>
+        </NavLink>
       </li>
       <li>
-        <Link className="link" to="/products">
+        <NavLink className="link" to="/products">
           Products
-        </Link>
+        </NavLink>
         <ul className="d-flex flex-column align-items-start">
-          <li>
-            <Link className="link" to="/products/headphone">
-              Headphone
-            </Link>
-          </li>
-          <li>
-            <Link className="link" to="/products/keyboard">
-              Keyboard
-            </Link>
-          </li>
-          <li>
-            <Link className="link" to="/products/mouse">
-              Mouse
-            </Link>
-          </li>
+          {categories.map((cat) => (
+            <li key={cat}>
+              <NavLink className="link" to={`/products/${cat}`}>
+                {cat}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </li>
       <CartWidget />

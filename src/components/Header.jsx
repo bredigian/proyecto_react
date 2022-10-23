@@ -1,8 +1,8 @@
-import HeaderIcon from "./HeaderIcon"
 import { CgMenu } from "react-icons/cg"
 import NavBar from "./NavBar"
 import GetWindowSize from "../functions/GetWindowSize"
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 const Header = () => {
   const [windowSize, setWindowSize] = useState(GetWindowSize())
   const [burgerMenu, setBurgerMenu] = useState(false)
@@ -23,7 +23,13 @@ const Header = () => {
       {windowSize.innerWidth < 769 ? (
         <header className="header w-100">
           <div className="header-container d-flex align-items-center justify-content-between p-4 w-100">
-            <HeaderIcon />
+            <Link to="/">
+              <img
+                className="headerIcon"
+                src="https://i.ibb.co/Zcfzb2s/brgIcon.png"
+                alt=""
+              />
+            </Link>
             <CgMenu
               onClick={() => handleBurgerMenu()}
               className="header-container__burgerIcon"
@@ -36,17 +42,17 @@ const Header = () => {
         </header>
       ) : (
         <header className="header w-100 d-flex justify-content-around align-items-center p-4">
-          <HeaderIcon />
+          <Link to="/">
+            <img
+              className="headerIcon"
+              src="https://i.ibb.co/Zcfzb2s/brgIcon.png"
+              alt=""
+            />
+          </Link>
           <NavBar />
         </header>
       )}
     </>
   )
-  // return (
-  //   <header className="header w-100 d-flex justify-content-around align-items-center p-4">
-  //     <HeaderIcon />
-  //     <NavBar />
-  //   </header>
-  // )
 }
 export default Header
