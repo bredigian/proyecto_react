@@ -3,7 +3,7 @@ import Description from "./Description"
 import { useState } from "react"
 import { CartContext } from "../context/CartContext"
 import { useContext } from "react"
-import { ToastContainer, toast } from "react-toastify"
+import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 const ItemDetail = ({ data }) => {
   const [goToCart, setGoToCart] = useState(false)
@@ -31,17 +31,6 @@ const ItemDetail = ({ data }) => {
       <div className="itemDetail d-flex  align-items-center justify-content-around p-5">
         <Description data={data} goToCart={goToCart} onAdd={onAdd} />
       </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
     </>
   )
 }

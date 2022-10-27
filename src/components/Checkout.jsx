@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react"
+import { useContext } from "react"
 import { CartContext } from "../context/CartContext"
 import { Link } from "react-router-dom"
 import Brief from "./Brief"
@@ -24,7 +24,8 @@ const Checkout = () => {
         name: data.name,
         phone: data.phone,
         email: data.email,
-        timeDay: new Date().toDateString(),
+        day: new Date().toDateString(),
+        dayTime: new Date().toLocaleTimeString(),
         status: "generated",
       },
       items: cart.map((product) => ({

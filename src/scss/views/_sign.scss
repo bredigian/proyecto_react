@@ -1,0 +1,51 @@
+.sign {
+  animation: showContainer 1s ease-in-out;
+  @include skewTransform;
+  margin: auto;
+  &-title {
+    font-size: 4rem;
+    font-weight: 700;
+    color: black;
+  }
+  &-form {
+    background-color: black;
+    &__input {
+      width: 100%;
+      label {
+        color: $colorPrimary;
+        font-weight: 700;
+        font-size: 2rem;
+        width: 100%;
+      }
+      input {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        border-bottom: solid #a0a0a0 0.1rem;
+        outline: none;
+        color: $colorPrimary;
+        font-size: 1.75rem;
+      }
+    }
+    &__submitContainer {
+      height: 150px;
+      display: grid;
+      place-items: center;
+      .buttonSubmit {
+        background-color: transparent;
+        border: solid $colorPrimary 0.2rem;
+        color: $colorPrimary;
+        font-weight: 700;
+        padding: 1rem;
+        font-size: 2rem;
+        margin-top: 2rem;
+      }
+    }
+    .link {
+      color: $colorPrimary;
+      font-size: 1.75rem;
+      width: 250px;
+      text-align: center;
+    }
+  }
+}

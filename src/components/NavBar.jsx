@@ -3,8 +3,15 @@ import CartWidget from "./CartWidget"
 import { collection, getDocs, getFirestore } from "firebase/firestore"
 import { useState } from "react"
 import { useEffect } from "react"
+import { useContext } from "react"
+import { AuthContext } from "../context/AuthContext"
 const NavBar = ({ isBurgerMenu }) => {
   const [categories, setCategories] = useState([])
+  const { userCurrent, logOut } = useContext(AuthContext)
+  console.log(userCurrent)
+  const handleLogout = () => {
+    logOut()
+  }
   useEffect(() => {
     const db = getFirestore()
     const categoriesCollection = collection(db, "categories")
@@ -39,7 +46,22 @@ const NavBar = ({ isBurgerMenu }) => {
           ))}
         </ul>
       </li>
-      <CartWidget />
+      {userCurrent ? (
+        <>
+          <CartWidget />
+          <li onClick={handleLogout}>
+            <NavLink to={"/"} className="link">
+              Log Out
+            </NavLink>
+          </li>
+        </>
+      ) : (
+        <li>
+          <NavLink to={"/signin"} className="link">
+            Sign In
+          </NavLink>
+        </li>
+      )}
     </nav>
   )
 }

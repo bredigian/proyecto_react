@@ -1,0 +1,30 @@
+.register {
+  gap: 10rem;
+  @include skewTransform;
+  margin: auto;
+  &-title {
+    font-size: 5rem;
+    color: $colorPrimary;
+    background-color: black;
+    padding: 2rem;
+    font-weight: 700;
+    width: 75%;
+    text-align: center;
+  }
+  &-container {
+    &__button {
+      font-size: 3rem;
+      font-weight: 700;
+      padding: 2rem;
+      border: solid black 0.4rem;
+      background-color: $colorPrimary;
+      color: black;
+      width: 200px;
+      transition: all 0.2s;
+      &:hover {
+        background-color: black;
+        color: $colorPrimary;
+      }
+    }
+  }
+}
