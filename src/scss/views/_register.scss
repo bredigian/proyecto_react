@@ -1,4 +1,5 @@
 .register {
+  animation: showContainer 1s ease-in-out;
   gap: 10rem;
   @include skewTransform;
   margin: auto;

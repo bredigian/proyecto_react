@@ -1,5 +1,6 @@
 @mixin navbarStyle {
   @media (max-width: 768px) {
+    animation: showContainer 1s ease-in-out;
     list-style-type: none;
     flex-direction: column !important;
     align-items: end !important;
@@ -8,7 +9,7 @@
     position: absolute;
     width: 100%;
     z-index: 4;
-    transform: translateY(-380px);
+    transform: translateY(-430px);
     transition: all 0.5s;
     padding: 2rem;
     li {
@@ -52,7 +53,9 @@
     }
   }
   @media (min-width: 769px) {
+    animation: showContainer 1s ease-in-out;
     list-style-type: none;
+    transition: all 1s;
     li {
       border-bottom: solid transparent 0.2rem;
       font-size: 1.75rem;
@@ -63,15 +66,16 @@
       text-align: center;
       text-decoration: none;
       color: black;
-      &:nth-child(2) {
+      text-transform: uppercase;
+      &:nth-child(2),
+      &:nth-child(3) {
         &:hover {
           border-color: transparent;
         }
       }
       .link {
         text-decoration: none;
-        color: black;
-        text-transform: uppercase;
+        color: inherit;
       }
       &:hover {
         border-color: black;
@@ -99,11 +103,11 @@
       .cartWidget {
         gap: 1rem !important;
         &-total {
-          background-color: black;
+          background-color: $colorPrimary;
           width: 25px;
           height: 25px;
           font-size: 1.25rem;
-          color: $colorPrimary;
+          color: black;
           display: grid;
           place-items: center;
           border-radius: 100%;

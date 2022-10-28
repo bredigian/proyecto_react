@@ -1,5 +1,12 @@
 import { Link, useNavigate } from "react-router-dom"
 import React, { useContext, useState } from "react"
+import {
+  addDoc,
+  collection,
+  doc,
+  getFirestore,
+  setDoc,
+} from "firebase/firestore"
 
 import { AuthContext } from "../context/AuthContext"
 import Loading from "./Loading"
@@ -7,7 +14,7 @@ import SubmitLoader from "./SubmitLoader"
 import { toast } from "react-toastify"
 
 const Signup = () => {
-  const { signUp } = useContext(AuthContext)
+  const { signUp, userCurrent } = useContext(AuthContext)
   const [loading, setLoading] = useState(false)
   const [isLogging, setIsLogging] = useState(false)
   const navigate = useNavigate()
@@ -19,22 +26,29 @@ const Signup = () => {
       lastName: e.target.lastName.value,
       email: e.target.email.value,
       password: e.target.password.value,
+      phone: e.target.phone.value,
+      wishlist: [],
+      rol: "client",
     }
     try {
       await signUp(user.email, user.password)
-      toast.success("User created done", {
-        position: "top-right",
-        autoClose: 2500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "dark",
+      const db = getFirestore()
+      const userDoc = collection(db, "users")
+      addDoc(userDoc, user).then(() => {
+        toast.success("User created done", {
+          position: "top-right",
+          autoClose: 2500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+        })
+        setTimeout(() => {
+          navigate("/")
+        }, 1500)
       })
-      setTimeout(() => {
-        navigate("/")
-      }, 1500)
     } catch {
       setTimeout(() => {
         setIsLogging(false)
@@ -71,6 +85,10 @@ const Signup = () => {
           <div className="sign-form__input d-flex flex-column align-items-start gap-2">
             <label htmlFor="">Last name</label>
             <input type="text" id="lastName" />
+          </div>
+          <div className="sign-form__input d-flex flex-column align-items-start gap-2">
+            <label htmlFor="">Phone number</label>
+            <input type="tel" id="phone" />
           </div>
           <div className="sign-form__input d-flex flex-column align-items-start gap-2">
             <label htmlFor="">Email</label>

@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react"
+
 import { CgMenu } from "react-icons/cg"
-import NavBar from "./NavBar"
 import GetWindowSize from "../functions/GetWindowSize"
-import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import NavBar from "./NavBar"
+
 const Header = () => {
   const [windowSize, setWindowSize] = useState(GetWindowSize())
   const [burgerMenu, setBurgerMenu] = useState(false)
@@ -41,7 +43,7 @@ const Header = () => {
           />
         </header>
       ) : (
-        <header className="header w-100 d-flex justify-content-around align-items-center p-4">
+        <header className="header w-100 d-flex justify-content-between align-items-center">
           <Link to="/">
             <img
               className="headerIcon"

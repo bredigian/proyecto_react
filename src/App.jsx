@@ -11,67 +11,80 @@ import Header from "./components/Header"
 import Home from "./components/Home"
 import ItemDetailContainer from "./components/ItemDetailContainer"
 import ItemListContainer from "./components/ItemListContainer"
+import Loading from "./components/Loading"
 import ProtectedRoute from "./components/ProtectedRoute"
 import Sign from "./components/Sign"
 import Signin from "./components/Signin"
 import Signup from "./components/Signup"
 import { ToastContainer } from "react-toastify"
+import { useEffect } from "react"
+import { useState } from "react"
 
 const App = () => {
-  return (
-    <Router>
-      <AuthProvider>
-        <CartProvider>
-          <Header />
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route exact path="/register" element={<Sign />} />
-            <Route exact path="/signin" element={<Signin />} />
-            <Route exact path="/signup" element={<Signup />} />
-            <Route
-              exact
-              path="/products"
-              element={<ItemListContainer title="Products" />}
+  const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true)
+    }, 2500)
+  }, [loading])
+  if (loading) {
+    return (
+      <Router>
+        <AuthProvider>
+          <CartProvider>
+            <Header />
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route exact path="/register" element={<Sign />} />
+              <Route exact path="/signin" element={<Signin />} />
+              <Route exact path="/signup" element={<Signup />} />
+              <Route
+                exact
+                path="/products"
+                element={<ItemListContainer title="Products" />}
+              />
+              <Route
+                exact
+                path="/products/:category"
+                element={<ItemListContainer title="Products" />}
+              />
+              <Route
+                exact
+                path="/products/:category/:itemId"
+                element={
+                  <ProtectedRoute>
+                    <ItemDetailContainer />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                exact
+                path="/cart"
+                element={
+                  <ProtectedRoute>
+                    <Checkout />
+                  </ProtectedRoute>
+                }
+              />
+            </Routes>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
             />
-            <Route
-              exact
-              path="/products/:category"
-              element={<ItemListContainer title="Products" />}
-            />
-            <Route
-              exact
-              path="/products/:category/:itemId"
-              element={
-                <ProtectedRoute>
-                  <ItemDetailContainer />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              exact
-              path="/cart"
-              element={
-                <ProtectedRoute>
-                  <Checkout />
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
-        </CartProvider>
-      </AuthProvider>
-    </Router>
-  )
+          </CartProvider>
+        </AuthProvider>
+      </Router>
+    )
+  } else {
+    return <Loading />
+  }
 }
 
 export default App

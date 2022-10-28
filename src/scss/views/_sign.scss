@@ -1,7 +1,7 @@
 .sign {
-  animation: showContainer 1s ease-in-out;
   @include skewTransform;
-  margin: auto;
+  margin: 2rem auto;
+  animation: showContainer 1s ease-in-out;
   &-title {
     font-size: 4rem;
     font-weight: 700;
@@ -39,6 +39,10 @@
         padding: 1rem;
         font-size: 2rem;
         margin-top: 2rem;
+        transition: all 0.2s;
+        &:hover {
+          @include buttonHover;
+        }
       }
     }
     .link {
