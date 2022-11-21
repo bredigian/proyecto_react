@@ -1,9 +1,9 @@
-import { useContext } from "react"
 import { CartContext } from "../context/CartContext"
 import { MdOutlineRemoveShoppingCart } from "react-icons/md"
+import { useContext } from "react"
+
 const Brief = ({ product }) => {
   const { removeProduct } = useContext(CartContext)
-  console.log(product)
   return (
     <div className="cart-container__item d-flex align-items-center justify-content-around gap-2 p-4 w-75">
       <div className="cart-container__item-img">

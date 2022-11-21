@@ -1,29 +1,29 @@
-import { useContext } from "react"
+import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { useEffect, useState } from "react"
+
+import { AuthContext } from "../context/AuthContext"
+import Brief from "./Brief"
 import { CartContext } from "../context/CartContext"
 import { Link } from "react-router-dom"
-import Brief from "./Brief"
-import { useEffect, useState } from "react"
-import { getFirestore, collection, addDoc } from "firebase/firestore"
 import Loading from "./Loading"
-import { useForm } from "react-hook-form"
+import SubmitLoader from "./SubmitLoader"
 import Swal from "sweetalert2"
+import { useContext } from "react"
 import withReactContent from "sweetalert2-react-content"
+
 const Checkout = () => {
   const { cart, totalPrice, clearCart } = useContext(CartContext)
+  const { userData } = useContext(AuthContext)
   const [loading, setLoading] = useState(false)
-  const [showForm, setShowForm] = useState(false)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
   const MySwal = withReactContent(Swal)
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm()
-  const checkout = (data) => {
+  const checkout = () => {
+    setCheckoutLoading(true)
     const order = {
       buyer: {
-        name: data.name,
-        phone: data.phone,
-        email: data.email,
+        name: `${userData.firstName} ${userData.lastName}`,
+        phone: userData.phone,
+        email: userData.email,
         day: new Date().toDateString(),
         dayTime: new Date().toLocaleTimeString(),
         status: "generated",
@@ -50,9 +50,6 @@ const Checkout = () => {
     setTimeout(() => {
       clearCart()
     }, 1500)
-  }
-  const handleShowForm = () => {
-    setShowForm(!showForm)
   }
   useEffect(() => {
     setTimeout(() => {
@@ -81,74 +78,11 @@ const Checkout = () => {
             <div className="cart-info d-flex align-items-center justify-content-center gap-5 w-100">
               <p className="cart-info__total m-0">TOTAL ${totalPrice()}</p>
               <button
-                onClick={() => handleShowForm()}
+                onClick={() => checkout()}
                 className="cart-info__buttonCheckout"
               >
-                Checkout
+                {checkoutLoading ? <SubmitLoader /> : "Checkout"}
               </button>
-            </div>
-            <div
-              className={`cart-checkout ${
-                showForm && "checkoutShow"
-              } d-flex flex-column align-items-center p-4 gap-5 w-50`}
-            >
-              <p className="m-0 cart-checkout__title">
-                Please, complete the next form
-              </p>
-              <form
-                onSubmit={handleSubmit(checkout)}
-                className="cart-checkout__form d-flex flex-column align-items-center gap-4"
-              >
-                <div className="cart-checkout__form-input d-flex flex-column align-items-start">
-                  <label>Name</label>
-                  <input
-                    type="text"
-                    {...register("name", {
-                      required: true,
-                    })}
-                  />
-                  {errors.name?.type === "required" && (
-                    <p className="inputTextError">Invalid name</p>
-                  )}
-                </div>
-                <div className="cart-checkout__form-input d-flex flex-column align-items-start">
-                  <label>Phone</label>
-                  <input
-                    type="tel"
-                    {...register("phone", {
-                      required: true,
-                    })}
-                  />
-                  {errors.phone?.type === "required" && (
-                    <p className="inputTextError">Invalid phone</p>
-                  )}
-                </div>
-                <div className="cart-checkout__form-input d-flex flex-column align-items-start">
-                  <label>Email</label>
-                  <input
-                    type="email"
-                    {...register("email", {
-                      required: true,
-                    })}
-                  />
-                  {errors.email?.type === "required" && (
-                    <p className="inputTextError">Invalid email</p>
-                  )}
-                </div>
-                <div className="cart-checkout__form-input d-flex flex-column align-items-start">
-                  <label>Repeat email</label>
-                  <input
-                    type="email"
-                    {...register("email", {
-                      required: true,
-                    })}
-                  />
-                  {errors.email?.type === "required" && (
-                    <p className="inputTextError">Invalid email</p>
-                  )}
-                </div>
-                <input type="submit" value="Order" className="buttonCheckout" />
-              </form>
             </div>
           </div>
         </>

@@ -14,7 +14,7 @@ import SubmitLoader from "./SubmitLoader"
 import { toast } from "react-toastify"
 
 const Signup = () => {
-  const { signUp, userCurrent } = useContext(AuthContext)
+  const { signUp } = useContext(AuthContext)
   const [loading, setLoading] = useState(false)
   const [isLogging, setIsLogging] = useState(false)
   const navigate = useNavigate()
@@ -27,7 +27,7 @@ const Signup = () => {
       email: e.target.email.value,
       password: e.target.password.value,
       phone: e.target.phone.value,
-      wishlist: [],
+      cart: [],
       rol: "client",
     }
     try {

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
+
 export const CartContext = React.createContext([])
 const CartProvider = ({ children }) => {
   const getInitialState = () => {
