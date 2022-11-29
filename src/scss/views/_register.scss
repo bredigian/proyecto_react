@@ -29,3 +29,17 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .register {
+    &-title {
+      font-size: 2rem;
+    }
+    &-container {
+      flex-direction: column;
+      &__button {
+        font-size: 2rem;
+        width: inherit;
+      }
+    }
+  }
+}

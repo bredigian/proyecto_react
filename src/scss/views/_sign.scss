@@ -53,3 +53,13 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .sign {
+    &-form {
+      width: 90% !important;
+      .link {
+        width: 180px;
+      }
+    }
+  }
+}
