@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom"
-import Item from "./Item"
 import ButtonBackTo from "./ButtonBackTo"
+import Item from "./Item"
+import { NavLink } from "react-router-dom"
+
 const ItemList = ({ data, category, onlyCat }) => {
   if (onlyCat) {
     return (
@@ -11,8 +12,8 @@ const ItemList = ({ data, category, onlyCat }) => {
               key={item.id}
               itemId={item.id}
               itemName={item.name}
-              itemCategory={item.categoryId}
-              itemStock={item.stock}
+              itemCategory={item.category}
+              itemStock={item.quantity}
               itemPrice={item.price}
               itemImg={item.img}
               itemInitial="1"
@@ -36,8 +37,8 @@ const ItemList = ({ data, category, onlyCat }) => {
               key={item.id}
               itemId={item.id}
               itemName={item.name}
-              itemCategory={item.categoryId}
-              itemStock={item.stock}
+              itemCategory={item.category}
+              itemStock={item.quantity}
               itemPrice={item.price}
               itemImg={item.img}
               itemInitial="1"

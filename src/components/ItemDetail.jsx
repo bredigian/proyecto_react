@@ -1,10 +1,12 @@
-import ButtonBackTo from "./ButtonBackTo"
-import Description from "./Description"
-import { useState } from "react"
-import { CartContext } from "../context/CartContext"
-import { useContext } from "react"
-import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+
+import ButtonBackTo from "./ButtonBackTo"
+import { CartContext } from "../context/CartContext"
+import Description from "./Description"
+import { toast } from "react-toastify"
+import { useContext } from "react"
+import { useState } from "react"
+
 const ItemDetail = ({ data }) => {
   const [goToCart, setGoToCart] = useState(false)
   const { addToCart } = useContext(CartContext)
@@ -25,7 +27,7 @@ const ItemDetail = ({ data }) => {
   return (
     <>
       <ButtonBackTo
-        toRoute={`/products/${data.categoryId}`}
+        toRoute={`/products/${data.category}`}
         title={data.categoryId}
       />
       <div className="itemDetail d-flex  align-items-center justify-content-around p-5">

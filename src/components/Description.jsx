@@ -1,6 +1,7 @@
 import ItemQuantitySelector from "./ItemQuantitySelector"
-import { MdOutlineShoppingCart } from "react-icons/md"
 import { Link } from "react-router-dom"
+import { MdOutlineShoppingCart } from "react-icons/md"
+
 const Description = ({ data, goToCart, onAdd }) => {
   return (
     <>
@@ -9,7 +10,7 @@ const Description = ({ data, goToCart, onAdd }) => {
       </div>
       <div className="d-flex flex-column align-items-center gap-4">
         <p className="itemDetail-quantity m-0 text-center">
-          Available quantity: {data.stock}
+          Available quantity: {data.quantity}
         </p>
         <p className="itemDetail-name m-0">{data.name}</p>
         <p className="itemDetail-price m-0">${data.price}</p>

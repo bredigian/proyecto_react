@@ -1,4 +1,4 @@
-import { addDoc, collection, getFirestore } from "firebase/firestore"
+import { getDatabase, ref, set } from "firebase/database"
 import { useEffect, useState } from "react"
 
 import { AuthContext } from "../context/AuthContext"
@@ -17,36 +17,48 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false)
   const [checkoutLoading, setCheckoutLoading] = useState(false)
   const MySwal = withReactContent(Swal)
-  const checkout = () => {
+  const checkout = async () => {
     setCheckoutLoading(true)
-    const order = {
-      buyer: {
-        name: `${userData.firstName} ${userData.lastName}`,
-        phone: userData.phone,
-        email: userData.email,
-        day: new Date().toDateString(),
-        dayTime: new Date().toLocaleTimeString(),
-        status: "generated",
+    const order = [
+      {
+        buyer: {
+          name: `${userData.firstName} ${userData.lastName}`,
+          phone: userData.phone,
+          email: userData.email,
+          day: new Date().toDateString(),
+          dayTime: new Date().toLocaleTimeString(),
+          status: "generated",
+        },
+        items: cart.map((product) => ({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          quantity: product.quantity,
+        })),
+        total: totalPrice(),
       },
-      items: cart.map((product) => ({
-        id: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: product.quantity,
-      })),
-      total: totalPrice(),
-    }
-    const db = getFirestore()
-    const ordersCollection = collection(db, "orders")
-    addDoc(ordersCollection, order).then(({ id }) =>
-      MySwal.fire({
-        title: `Order ${id} created successfully!`,
-        color: "#000000",
-        icon: "success",
-        iconColor: "#000000",
-        confirmButtonColor: "#000000",
+    ]
+    const db = getDatabase()
+    const ordersRef = ref(db, "orders")
+    await set(ordersRef, order)
+      .then(() => {
+        MySwal.fire({
+          title: `Order created successfully!`,
+          color: "#000000",
+          icon: "success",
+          iconColor: "#000000",
+          confirmButtonColor: "#000000",
+        })
       })
-    )
+      .catch(() => {
+        MySwal.fire({
+          title: `Error creating order!`,
+          color: "#000000",
+          icon: "error",
+          iconColor: "#000000",
+          confirmButtonColor: "#000000",
+        })
+      })
     setTimeout(() => {
       clearCart()
     }, 1500)
@@ -57,7 +69,7 @@ const Checkout = () => {
     }, 1500)
   }, [])
   if (loading) {
-    if (cart.length == 0) {
+    if (cart.length === 0) {
       return (
         <div className="cartEmpty d-flex flex-column align-items-center w-75 gap-3 p-4">
           <p className="cartEmpty-title m-0">Cart empty!</p>

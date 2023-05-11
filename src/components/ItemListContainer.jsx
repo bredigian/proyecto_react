@@ -1,33 +1,52 @@
-import { useState, useEffect } from "react"
 import {
-  getFirestore,
-  getDocs,
   collection,
+  getDocs,
+  getFirestore,
   query,
   where,
 } from "firebase/firestore"
+import { getDownloadURL, getStorage, ref } from "firebase/storage"
+import { useEffect, useState } from "react"
+
 import ItemList from "./ItemList"
-import { useParams } from "react-router-dom"
 import Loading from "./Loading"
+import { useParams } from "react-router-dom"
+
 const ItemListContainer = (props) => {
   const [loading, setLoading] = useState(false)
   const [items, setItems] = useState([])
   const { category } = useParams()
-  useEffect(() => {
+
+  const fetchItems = async (categoryId) => {
     const db = getFirestore()
-    const queryCollection = collection(db, "items")
-    if (category) {
+    const storage = getStorage()
+    let productDocs
+    if (categoryId !== null) {
       const queryCategory = query(
-        queryCollection,
-        where("categoryId", "==", category)
+        collection(db, "products"),
+        where("category", "==", categoryId)
       )
-      getDocs(queryCategory).then((snapshot) => {
-        setItems(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
-      })
+      productDocs = await getDocs(queryCategory)
     } else {
-      getDocs(queryCollection).then((snapshot) => {
-        setItems(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+      const queryDocs = query(collection(db, "products"))
+      productDocs = await getDocs(queryDocs)
+    }
+    const updatedProducts = Promise.all(
+      productDocs?.docs.map(async (doc) => {
+        const product = { id: doc.id, ...doc.data() }
+        const imgUrlRef = ref(storage, `products/${doc.id}`)
+        const imgUrl = await getDownloadURL(imgUrlRef)
+        return { ...product, img: imgUrl }
       })
+    )
+    setItems(await updatedProducts)
+  }
+
+  useEffect(() => {
+    if (category) {
+      fetchItems(category)
+    } else {
+      fetchItems(null)
     }
     setTimeout(() => {
       setLoading(true)
@@ -38,10 +57,10 @@ const ItemListContainer = (props) => {
     category ? (title = category) : (title = props.title)
   }
   let itemsCategories = []
-  items.forEach((item) => {
+  items?.forEach((item) => {
     {
-      !itemsCategories.includes(item.categoryId) &&
-        itemsCategories.push(item.categoryId)
+      !itemsCategories.includes(item.category) &&
+        itemsCategories.push(item.category)
     }
   })
   return (
@@ -53,7 +72,7 @@ const ItemListContainer = (props) => {
             {itemsCategories.map((cat) => (
               <ItemList
                 key={cat}
-                data={items.filter((i) => i.categoryId == cat)}
+                data={items.filter((i) => i.category === cat)}
                 category={cat}
                 onlyCat={category}
               />

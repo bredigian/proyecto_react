@@ -8,6 +8,7 @@ const CartProvider = ({ children }) => {
   }
   const [cart, setCart] = useState(getInitialState)
   const addToCart = (data, quantity) => {
+    console.log(data)
     if (isInCart(data.id)) {
       setCart(
         cart.map((product) => {
