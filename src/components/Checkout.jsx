@@ -1,4 +1,4 @@
-import { getDatabase, ref, set } from "firebase/database"
+import { getDatabase, push, ref, set } from "firebase/database"
 import { useEffect, useState } from "react"
 
 import { AuthContext } from "../context/AuthContext"
@@ -19,28 +19,26 @@ const Checkout = () => {
   const MySwal = withReactContent(Swal)
   const checkout = async () => {
     setCheckoutLoading(true)
-    const order = [
-      {
-        buyer: {
-          name: `${userData.firstName} ${userData.lastName}`,
-          phone: userData.phone,
-          email: userData.email,
-          day: new Date().toDateString(),
-          dayTime: new Date().toLocaleTimeString(),
-          status: "generated",
-        },
-        items: cart.map((product) => ({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          quantity: product.quantity,
-        })),
-        total: totalPrice(),
+    const order = {
+      buyer: {
+        name: `${userData.firstName} ${userData.lastName}`,
+        phone: userData.phone,
+        email: userData.email,
+        day: new Date().toDateString(),
+        dayTime: new Date().toLocaleTimeString(),
+        status: "generated",
       },
-    ]
+      items: cart.map((product) => ({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        quantity: product.quantity,
+      })),
+      total: totalPrice(),
+    }
     const db = getDatabase()
     const ordersRef = ref(db, "orders")
-    await set(ordersRef, order)
+    await set(push(ordersRef), order)
       .then(() => {
         MySwal.fire({
           title: `Order created successfully!`,
