@@ -26,7 +26,7 @@ const Checkout = () => {
         email: userData.email,
         day: new Date().toDateString(),
         dayTime: new Date().toLocaleTimeString(),
-        status: "generated",
+        status: "pending",
       },
       items: cart.map((product) => ({
         id: product.id,
